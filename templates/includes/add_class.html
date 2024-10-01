@@ -1,0 +1,38 @@
+<!-- The Modal -->
+<div class="modal fade" id="addClassModal" tabindex="-1" aria-labelledby="addClassModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white" id="addClassModalLabel">Add Class</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-dark">
+                <!-- For the Add Form -->
+                <form method="POST" action="{{ url_for('add_class') }}">
+
+                    {{ add_form.hidden_tag() }}  <!-- CSRF protection -->
+                    <div class="form-group">
+                        {{ add_form.class_name.label }} {{ add_form.class_name(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ add_form.date.label }} {{ add_form.date(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ add_form.time.label }} {{ add_form.time(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ add_form.instructor.label }} {{ add_form.instructor(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ add_form.max_participants.label }} {{ add_form.max_participants(class="form-control") }}
+                    </div>
+                    <div class="text-center">
+                        {{ add_form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

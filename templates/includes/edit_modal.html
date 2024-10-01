@@ -1,0 +1,78 @@
+<!-- Cancel Class Modal -->
+<div class="modal fade" id="edit_modal-{{ course.id }}" tabindex="-1" aria-labelledby="edit_class_modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title  text-white" id="edit_class_modal">Edit class</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark">
+       <section class="container mb-4">
+    <h3 class="text-center mb-4">Edit Class</h3>
+    <form method="POST" action="{{ url_for('edit_class') }}">
+
+        {{ edit_form.hidden_tag() }}  <!-- CSRF protection -->
+        <input type="hidden" name="course_id" value="{{ course.id }}" >
+        <div class="form-group">
+            {{ edit_form.class_name.label }}
+            {{ edit_form.class_name(class="form-control", value=course.class_name) }}
+
+        </div>
+        <div class="form-group">
+            {{ edit_form.date.label }}
+            {{ edit_form.date(class="form-control", value=course.date) }}
+        </div>
+        <div class="form-group">
+            {{ edit_form.time.label }}
+            {{ edit_form.time(class="form-control", value=course.time.strftime('%H:%M')) }}
+        </div>
+        <div class="form-group">
+            {{ edit_form.instructor.label }}
+            {{ edit_form.instructor(class="form-control", value=course.instructor) }}
+        </div>
+        <div class="form-group">
+            {{ edit_form.max_participants.label }}
+            {{ edit_form.max_participants(class="form-control", value=course.max_participants) }}
+        </div>
+        <div class="text-center">
+            {{ edit_form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</section>
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+    const inputs = ['class-name', 'date', 'time', 'instructor', 'max_participants'];
+    console.log(class-name)
+
+    inputs.forEach(inputId => {
+        const input = document.getElementById(inputId);
+
+        // Save the initial value
+        const initialValue = input.value;
+
+        input.addEventListener('blur', function() {
+            // If the input value hasn't changed, set it back to the placeholder
+            if (input.value === initialValue) {
+                input.value = ''; // Clear the input
+            }
+        });
+
+        input.addEventListener('focus', function() {
+            // On focus, if the input is empty, set the value to the initial value
+            if (input.value === '') {
+                input.value = initialValue;
+            }
+        });
+    });
+});
+
+</script>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

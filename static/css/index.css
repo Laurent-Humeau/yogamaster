@@ -1,0 +1,123 @@
+/* General Styles for the Dashboard */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background for dark mode */
+    color: #e0e0e0; /* Light text color for readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styling */
+.navbar {
+    margin-bottom: 20px;
+    background-color: #1e1e1e; /* Dark background for navbar */
+    border-bottom: 1px solid #333; /* Dark border */
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    font-weight: bold;
+    color: #ff79c6; /* Pink accent for navbar text */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #6fcf97; /* Green accent on hover */
+}
+
+/* Hero Section Styling */
+.hero {
+    /*background: #2e2e2e; /* Darker background for hero section */
+    color: #e0e0e0; /* Light text for contrast */
+    padding: 12em 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #f0f0f0; /* Light color for main text */
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #b0b0b0; /* Slightly darker for secondary text */
+}
+
+/* Card Styling */
+.card {
+    border-radius: 8px;
+    background-color: #1e1e1e; /* Dark background for cards */
+    color: #e0e0e0; /* Light text color for cards */
+    border: 1px solid #333; /* Dark border */
+}
+
+
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Slightly darker shadow for better contrast */
+    border: 2px solid #6fcf97;
+
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #ff79c6; /* Pink accent for card titles */
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #a050b5; /* Muted pink for button background */
+    border: none;
+    color: #fff; /* White text for readability */
+}
+
+.btn-primary:hover {
+    background-color: #8e3a9c; /* Slightly darker pink on hover */
+}
+
+.btn-secondary {
+    background-color: #6fcf97; /* Muted green for secondary buttons */
+    border: none;
+    color: #fff; /* White text for readability */
+}
+
+.btn-secondary:hover {
+    background-color: #58b57e; /* Slightly darker green on hover */
+}
+
+/* Register Form Styles */
+.register-form {
+    background-color: #1e1e1e; /* Darker background for form */
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #333; /* Dark border for the form */
+    color: #e0e0e0; /* Light text color */
+}
+
+.register-form input, .register-form button {
+    background-color: #2e2e2e; /* Slightly lighter background for input fields */
+    color: #e0e0e0; /* Light text color for input fields */
+    border: 1px solid #444; /* Darker border for input fields */
+}
+
+.register-form input:focus, .register-form button:hover {
+    border-color: #a050b5; /* Muted pink border on focus/hover */
+    outline: none;
+}
+
+
+/* Footer Styling */
+.footer {
+    background-color: #1e1e1e; /* Dark background for footer */
+    color: #e0e0e0; /* Light text color for footer */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    color: #6fcf97; /* Muted green for footer text */
+}

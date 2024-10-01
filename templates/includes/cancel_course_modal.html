@@ -1,0 +1,26 @@
+<!-- Cancel Class Modal -->
+<div class="modal fade" id="cancelClassModal-{{ course.id }}" tabindex="-1" aria-labelledby="cancelClassModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="cancelClassModalLabel">Cancel Class Booking</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark">
+        <p>You are about to cancel your booking for the selected class {{ course.class_name }}. Are you sure you want to proceed?</p>
+        <p class="text-warning"><small>This action cannot be undone.</small></p>
+      </div>
+      <div class="modal-footer">
+      <form action="{{ url_for('cancel_booking') }}" method="POST">
+        <input type="hidden" name="course_id" value="{{ course.id }}" >
+        {{ cancel_class_form.hidden_tag() }}  <!-- For CSRF protection -->
+        {{ cancel_class_form.course_id }}
+          <button type="submit" class="btn btn-danger">Cancel class</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

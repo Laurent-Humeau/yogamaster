@@ -1,0 +1,46 @@
+<!-- Button to trigger modal -->
+<!--<button type="button" class="btn btn-info" data-toggle="modal" data-target="#pastClassesModal">Show Past Classes</button>-->
+
+<!-- Modal for Past Classes -->
+<div class="modal fade" id="pastClassesModal" tabindex="-1" role="dialog" aria-labelledby="pastClassesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title" id="pastClassesModalLabel">Past Classes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Class Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Instructor</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for course in past_booked_classes %}
+            <tr>
+              <td>{{ course.class_name }}</td>
+              <td>{{ course.date.strftime('%d-%m-%Y') }}</td>
+              <td>{{ course.time.strftime('%H:%M') }}</td>
+              <td>{{ course.instructor }}</td>
+            </tr>
+            {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">No past classes classes</td>
+                    </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+{% extends 'base/base_admin.html' %}
+{% block content %}
+
+<!-- Dashboard Container -->
+<div class="container mt-5" id="bookings">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="mb-4">Admin Dashboard</h1>
+            <p>Overview of bookings for classes.</p>
+        </div>
+    </div>
+
+    <!-- Bookings Table -->
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h2>Class Bookings</h2>
+            <table class="table table-striped ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Class Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Instructor</th>
+                        <th>number of participants</th>
+                        <th>Booked Users</th>
+                    </tr>
+                </thead>
+                <tbody class="text-white">
+                    {% for course in courses %}
+                    <tr>
+                        <td>{{ course.class_name }}</td>
+                        <td>{{ course.date.strftime('%d-%m-%Y') }}</td>
+                        <td>{{ course.time.strftime('%H:%M') }}</td>
+                        <td>{{ course.instructor }}</td>
+                        <td>{{ course.current_participants }}</td>
+                        <td>
+                            <ul class="list-unstyled">
+                                {% for user in course.booked_users %}
+                                <li>{{ user.username }}</li>
+                                {% else %}
+                                <li>No users have booked this course.</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Available classes to book -->
+<div class="container" id="available_classes">
+<div class="row my-5">
+        <div class="col-md-12">
+            <h2>Available classes</h2>
+            {% include 'includes/add_class.html' %}
+            <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#addClassModal">
+    Add Class
+</button>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Class Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Instructor</th>
+                        <th>Available spots</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-white">
+                    {% for course in courses %}
+                    {% include 'includes/edit_modal.html' %}
+                    {% include 'includes/delete_modal.html' %}
+                    <tr>
+                        <td>{{ course.class_name }}</td>
+                        <td>{{ course.date.strftime('%d-%m-%Y') }}</td>
+                        <td>{{ course.time.strftime('%H:%M') }}</td>
+                        <td>{{ course.instructor }}</td>
+                        <td>{{ course.max_participants }}</td>
+                        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_modal-{{ course.id }}" data-course-id="{{ course.id }}" > Edit </button>  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete_modal-{{ course.id }}"> Delete </button>  </td>
+
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">No available classes</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

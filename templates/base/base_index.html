@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Instructor Landing Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="static/css/index.css" rel="stylesheet">
+</head>
+
+<body>
+ <div class="container mt-3">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+<!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Find Your Inner Peace</h1>
+            <p>Join our yoga classes and discover the balance in life.</p>
+            <a href="#courses" class="btn btn-primary btn-hero">Explore Courses</a>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="container my-5">
+        <h2 class="text-center mb-4">Our Yoga Courses</h2>
+        <div class="row">
+            <!-- Course Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card card-hover">
+                    <img src="{{ url_for('static', filename='images/beginneryoga.png') }}" class="card-img-top" alt="Course 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Beginner Yoga</h5>
+                        <p class="card-text">A perfect start for those new to yoga. Learn the basics and build your foundation.</p>
+                        <a href="{{ url_for('learn_more_beginner') }}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Course Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card card-hover">
+                    <img src="{{ url_for('static', filename='images/mediumyoga.png') }}" class="card-img-top" alt="Course 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Advanced Yoga</h5>
+                        <p class="card-text">Deepen your practice with advanced techniques and poses.</p>
+                        <a href="{{ url_for('learn_more_intermediate') }}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Course Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card card-hover">
+                    <img src="{{ url_for('static', filename='images/advancedyoga.png') }}" class="card-img-top" alt="Course 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Meditation & Mindfulness</h5>
+                        <p class="card-text">Focus on mental well-being with our guided meditation and mindfulness sessions.</p>
+                        <a href="{{ url_for('learn_more_meditation') }}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% block account %}
+{% endblock %}
+
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
